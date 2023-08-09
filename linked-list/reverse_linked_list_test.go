@@ -10,6 +10,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// reverseList 反转链表
 func reverseList(head *ListNode) *ListNode {
 	var prev, curr, next *ListNode = nil, head, nil
 	for curr != nil {
@@ -21,22 +22,19 @@ func reverseList(head *ListNode) *ListNode {
 	return prev
 }
 
-func TestReverseList(t *testing.T) {
-	head := &ListNode{
-		Val: 1,
+// generateLinkedList 构造链表
+func generateLinkedList(arr []int) *ListNode {
+	head := &ListNode{Val: arr[0]}
+	tail := head
+	for i := 1; i < len(arr); i++ {
+		tail.Next = &ListNode{Val: arr[i]}
+		tail = tail.Next
 	}
-	node1 := &ListNode{
-		Val: 2,
-	}
-	head.Next = node1
-	node2 := &ListNode{
-		Val: 3,
-	}
-	node1.Next = node2
-	tail := &ListNode{
-		Val: 4,
-	}
-	node2.Next = tail
+	return head
+}
+
+// show 打印链表
+func show(head *ListNode) {
 	curr := head
 	for curr != nil {
 		if curr.Next == nil {
@@ -47,15 +45,14 @@ func TestReverseList(t *testing.T) {
 		curr = curr.Next
 	}
 	fmt.Println()
+}
+
+func TestReverseList(t *testing.T) {
+	arr := []int{1, 2, 3, 4}
+	head := generateLinkedList(arr)
+	fmt.Println("反转前：")
+	show(head)
 	newHead := reverseList(head)
-	curr = newHead
-	for curr != nil {
-		if curr.Next == nil {
-			fmt.Print(curr.Val)
-			break
-		}
-		fmt.Print(curr.Val, " -> ")
-		curr = curr.Next
-	}
-	fmt.Println()
+	fmt.Println("反转后：")
+	show(newHead)
 }
