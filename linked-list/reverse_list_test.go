@@ -20,9 +20,9 @@ func reverseList(head *ListNode) *ListNode {
 func TestReverseList(t *testing.T) {
 	arr := []int{1, 2, 3, 4}
 	head := generateLinkedList(arr)
-	fmt.Println("反转前：")
+	fmt.Print("反转前：")
 	show(head)
 	newHead := reverseList(head)
-	fmt.Println("反转后：")
+	fmt.Print("反转后：")
 	show(newHead)
 }

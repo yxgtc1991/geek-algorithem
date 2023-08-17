@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// hasCycle 141、环形链表
 func hasCycle(head *ListNode) bool {
 	slow, fast := head, head
 	// 快慢指针
@@ -21,8 +22,11 @@ func hasCycle(head *ListNode) bool {
 func TestHasCycle(t *testing.T) {
 	arr := []int{1, 2, 3, 4}
 	head := generateRing(arr)
-	isCycle := hasCycle(head)
-	c.Convey("环形链表", t, func() {
-		c.So(isCycle, c.ShouldEqual, true)
+	c.Convey("测试-有环", t, func() {
+		c.So(hasCycle(head), c.ShouldEqual, true)
+	})
+	head2 := generateLinkedList(arr)
+	c.Convey("测试-无环", t, func() {
+		c.So(hasCycle(head2), c.ShouldEqual, false)
 	})
 }

@@ -24,9 +24,9 @@ func swapPairs(head *ListNode) *ListNode {
 func TestSwapPairs(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 5}
 	head := generateLinkedList(arr)
-	fmt.Println("交换前：")
+	fmt.Print("交换前：")
 	show(head)
 	newHead := swapPairs(head)
-	fmt.Println("交换后：")
+	fmt.Print("交换后：")
 	show(newHead)
 }
